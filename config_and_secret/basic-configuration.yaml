@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: basic-config
+data:
+  basic.cfg: |-
+    first.item.value=1000
+    second.item.value=10
