@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: give-fruit-service
+spec:
+  containers:
+  - name: service-not-using-port-80
+    image: linuxacademycontent/legacy-fruit-service:1
+  - name: haproxy-to-port-80
+    image: haproxy:1.7
+    ports:
+    - containerPort: 80
+    volumeMounts:
+    - name: config-volume
+      mountPath: /usr/local/etc/haproxy
+  volumes:
+  - name: config-volume
+    configMap:
+      name: ha-proxy-config
