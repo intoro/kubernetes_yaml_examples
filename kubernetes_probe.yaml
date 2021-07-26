@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: live-and-ready-probe
+spec:
+  containers:
+  - name: live-and-ready-probe
+    image: linuxacademycontent/candy-service:2
+    livenessProbe:
+      httpGet:
+        path: /hea;thz
+        port: 8081
+    readinessProbe:
+      httpGet:
+        path: /
+        port: 80
